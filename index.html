@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		leson8
+	</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+//Написать функцию odd, которая принимает массив чисел и возвращает массив с нечетными значениями.
+		var odd= function oddFunction(arr){
+			var oddResult=[];
+			for (var i=0; i<arr.length;i++){
+				if (arr[i]%2!==0){
+					oddResult.push(arr[i]);
+				}
+			}
+			return oddResult;
+		}
+		console.log(odd([1,2,3,4,5,6,7,8,9,10]));
+//Написать функцию even, которая делает все тож самое, но возвращает массив с четными числами.
+		var even= function evenFunction(arr){
+			var evenResult=[];
+			for (var i=0; i<arr.length;i++){
+				if (arr[i]%2===0){
+					evenResult.push(arr[i]);
+				}
+			}
+			return evenResult;
+		}
+		console.log(even([1,2,3,4,5,6,7,8,9,10]));
+
+// 	Написать функцию которая выводит только положительные элементы из массива
+		var positiv= function positivFunction(arr){
+			var positivResult=[];
+			for (var i=0; i<arr.length;i++){
+				if (arr[i]>0){
+					positivResult.push(arr[i]);
+				}
+			}
+			return positivResult;
+		}
+		console.log(positiv([-1,-2,3,4,5,-6,7,-8,9,-10]));
+
+// 	Написать функцию которая выводит только отрицательные элементы из массива
+		var negativ= function negativFunction(arr){
+			var negativResult=[];
+			for (var i=0; i<arr.length;i++){
+				if (arr[i]<0){
+					negativResult.push(arr[i]);
+				}
+			}
+			return negativResult;
+		}
+		console.log(negativ([-1,-2,3,4,5,-6,7,-8,9,-10]));
+
+//У нас есть многомерный массив чисел, количество вложенностей произвольное, мы его не знаем. Нужно написать функцию flat, которая вернет одномерный массив из всех чисел.
+var flat=function flatFunction(arr){
+		var flatResult=[];
+		function checkEveryElement(element){
+			if (Array.isArray(element)){
+				element.forEach(checkEveryElement);
+			} else{
+				flatResult.push(element);
+			}
+		}
+		arr.forEach(checkEveryElement);
+		return flatResult;
+		}
+console.log(flat([123,
+					[4,5,6,[
+					11,12,1111]
+					],
+					[7,8,9]]));
+
+//Написать функцию для числового палиндрома, выводить номер операции на которой число становится палиндромом
+var count=1;
+var palindrom=function palindromFunction (number){
+	var reverseNumber= +((((number+'').split('')).reverse()).join(''));
+	var isPalindrom=number+reverseNumber;
+	if (number===reverseNumber){
+		return 'The number is palindrom, quantity of operations is 0';
+	} else if(number===196){
+		return 'It is steel imposible to find palindrom of that number';
+	}else if (isPalindrom===(+((((isPalindrom+'').split('')).reverse()).join('')))){
+		return 'The number is palindrom after '+count+' operation(s)';
+	} else {
+		count++;
+		return palindromFunction (isPalindrom);
+	}
+
+}
+console.log(palindrom(25));
+//console.log(palindrom(96));
+//console.log(palindrom(196));
+//console.log(palindrom(121));
+
+/*
+		var arr=[1,2,3];
+		console.log(arr); //вывели в  консоль массив
+		console.log(arr.length); // длина массива
+		var first=arr[0];// певрый элемент
+		console.log(first);
+		var last=arr[arr.length-1]// последний элемент
+		console.log(last); 
+		arr [arr.length]=4; //добавление следующего по поряду элемента в  массив
+		console.log(arr); 
+		var arr1=[             //многомерный массив
+					[1,2,3],
+					[4,5,6],
+					[7,8,9]
+
+		]
+		console.log(arr1[1][2]);//чтобы получить элемент вложенного массива
+		arr.push(6); //добавление в  коне массива, аналогично arr [arr.length]=4; Этот метод возвращает длину массива, если куда-то записатьнапример результат
+		console.log(arr); 
+		arr.pop();// метод удаляет последний элемент в  массиве, возвращает значение удаленного элемента (если куда-то его сохранить)
+		console.log(arr); 
+		arr.shift(); //удаление первого элемента в массиве, лучше не использовать так как после данной операции должен быть осуществлен пересчет индексов всех последующих элементов - а  это ресурсоемко
+		console.log(arr); 
+		arr.unshift(11);// добавление первого элемента в  массив, лучше не использовать так как после данной операции должен быть осуществлен пересчет индексов всех последующих элементов - а  это ресурсоемко
+		console.log(arr); 
+		var sArr= arr.toString();//преобразование массива в принитив стринг , но только для ситуаций когда элементы только числовые, не содержат объекты, функции 
+		console.log(sArr); 
+
+		var fullName='Aleksandr Konstantinovich';
+		var arrFromStr=fullName.split(''); //split спользуется для преобразования стринга в  массив, в  скобках передаем разделитель
+		console.log(arrFromStr);
+		var arrFromStr=fullName.split(' ');
+		console.log(arrFromStr);
+		var arrFromStr=fullName.split('n');
+		console.log(arrFromStr);
+
+		var day ='01/08/2019';
+		var arrDAy=day.split('/');
+		console.log(arrDAy);
+		var otherDAy=arrDAy.join('-');
+		console.log(otherDAy);
+
+		var a=[1,2,3];
+		var b=[4,5,6];
+		console.log(a.concat(b));
+		*/
+	</script>
+</body>
+</html>
